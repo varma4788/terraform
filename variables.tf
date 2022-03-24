@@ -26,4 +26,7 @@ variable "ipaddress" {
     type = string
   
 }
+ variable "mytfnsg" {
+   type = string
+ }
 
