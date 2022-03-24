@@ -29,4 +29,6 @@ variable "ipaddress" {
  variable "mytfnsg" {
    type = string
  }
-
+variable "nicname" {
+   type = string
+ }

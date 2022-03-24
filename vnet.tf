@@ -19,3 +19,21 @@ resource "azurerm_virtual_network" "terraformnetwork" {
 
   tags = var.tags
 }
+resource "azurerm_network_interface" "tfvNic" {
+  name                = var.nicname
+  location            = var.location
+  resource_group_name = azurerm_resource_group.myTerraformGroup.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.terraformnetworksubnet.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id = azurerm_public_ip.public_ip
+  }
+  tags = var.tags
+
+}
+resource "azurerm_network_interface_security_group_association" "nsgassociation" {
+  network_interface_id      = azurerm_network_interface.tfvNic.id
+  network_security_group_id = azurerm_network_security_group.mytfnsg.id
+}
