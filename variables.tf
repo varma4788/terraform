@@ -22,3 +22,8 @@ variable "subnetname" {
   
 }
 
+variable "ipaddress" {
+    type = string
+  
+}
+
